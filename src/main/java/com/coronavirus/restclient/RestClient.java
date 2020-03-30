@@ -32,6 +32,10 @@ public class RestClient {
     public ObjectNode getStatistics(String conutry) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.add("Accept", "application/json");
+        headers.add("Access-Control-Allow-Origin", "*");
+        headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization");
+        headers.add("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
         headers.add("x-rapidapi-host", "covid-19-coronavirus-statistics.p.rapidapi.com");
         headers.add("x-rapidapi-key", "ee704c2b59msh516429a6ba62ff6p1ab71cjsnc1c01cd03d0a");
 
