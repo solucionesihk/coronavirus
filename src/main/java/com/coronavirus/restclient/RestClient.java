@@ -32,8 +32,8 @@ public class RestClient {
     public ObjectNode getStatistics(String conutry) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.add("Accept", "application/json");
         
+        headers.add("Accept", "application/json");
         headers.add("Access-Control-Allow-Origin", "*");
         headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization");
         headers.add("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
