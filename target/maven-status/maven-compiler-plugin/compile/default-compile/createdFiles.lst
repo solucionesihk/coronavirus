@@ -1,0 +1,10 @@
+com\coronavirus\service\impl\ServiceImpl.class
+com\coronavirus\endpoint\Controller.class
+com\coronavirus\config\ResourceNotFoundException.class
+com\coronavirus\service\Service.class
+com\coronavirus\util\Util.class
+com\coronavirus\config\ConfigRestClient.class
+com\coronavirus\config\ConfigProperties.class
+META-INF\spring-configuration-metadata.json
+com\coronavirus\restclient\RestClient.class
+com\coronavirus\BasicApplication.class
