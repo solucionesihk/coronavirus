@@ -14,9 +14,9 @@
     <div class="col-md-8 col-md-offset-2">
       <input id="input-search" type="text" class="form-control" v-model="textSearch" placeholder='Search...'>
       <div id="list-countries" v-if="countriesFilter && countriesFilter.length">
-        <div class="panel panel-default" v-for="country of countriesFilter">
+        <div class="panel panel-default" v-for="country of countriesFilter.slice(0, 50)">
           <div class="panel-heading">
-            <span>{{country.name}}</span>
+            <span>Last Update: {{country.lastUpdate}}</span>
           </div>
           <div class="panel-body">
             <div class="row">
