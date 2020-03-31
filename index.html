@@ -12,7 +12,7 @@
 <div class="container">
   <div id="app" class="row">
     <div class="col-md-8 col-md-offset-2">
-      <input id="input-search" type="text" class="form-control" v-model="textSearch" placeholder='Search...'>
+    <div>Búsqueda por país: <input id="input-search" type="text" class="form-control" v-model="textSearch" placeholder='Buscar...'></div>
       <div id="list-countries" v-if="countriesFilter && countriesFilter.length">
         <div class="panel panel-default" v-for="country of countriesFilter.slice(0, 50)">
           <div class="panel-heading">
