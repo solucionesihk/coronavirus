@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,6 +32,19 @@ public class Controller {
     public ObjectNode getStatisticsByCountry( ) throws ResourceNotFoundException{
         try{
             ObjectNode statistics = restClient.getStatistics( "A" );
+            return statistics;
+        }
+        catch(Exception e){
+            LOGGER.error("Error, detail: {}", e);
+            return null;
+        }
+
+    }
+    
+    @GetMapping(value = "statistics-covid-19/resumen")
+    public ObjectNode getResumen( ) throws ResourceNotFoundException{
+        try{
+            ObjectNode statistics = restClient.getResumen("A" );
             return statistics;
         }
         catch(Exception e){

@@ -31,7 +31,7 @@ public class RestClient {
     @Autowired
     private Util responseRestClientUtil;
     
-    public ObjectNode getStatistics(String country) {
+    public ObjectNode getStatistics( String country ) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         String start = country.substring(0,1).toUpperCase();
@@ -55,46 +55,42 @@ public class RestClient {
         
     }
     
-/*    public ObjectNode get (String country){
+    public ObjectNode getResumen (String country){
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode json = mapper.createObjectNode();
-        ObjectNode statistics = getStatistics(country);
+        ObjectNode statistics = getStatistics( country );
         ArrayNode array = (ArrayNode)statistics.get("response").get("data").get("covid19Stats");
             
         //country
-        if(array.size()>1)
-        {
-            String stat = statistics.get("response").get("data").get("covid19Stats").get(0).get("country").asText();
-            String lastUpdate = statistics.get("response").get("data").get("covid19Stats").get(0).get("lastUpdate").asText();
+        //String stat = statistics.get("response").get("data").get("covid19Stats").get(0).get("country").asText();
+        String lastUpdate = statistics.get("response").get("data").get("covid19Stats").get(0).get("lastUpdate").asText();
 
-            List<JsonNode> listConfirmed = array.findValues("confirmed");
-            Integer sumConfirmed = 0;
-            sumConfirmed = listConfirmed.stream().map((l) -> l.asInt()).reduce(sumConfirmed, Integer::sum);
-            
-            List<JsonNode> listDeaths = array.findValues("deaths");
-            Integer sumDeaths = 0;
-            sumDeaths = listDeaths.stream().map((l) -> l.asInt()).reduce(sumDeaths, Integer::sum);
-            
-            List<JsonNode> listRecovered = array.findValues("recovered");
-            Integer sumRecovered = 0;
-            sumRecovered = listRecovered.stream().map((l) -> l.asInt()).reduce(sumRecovered, Integer::sum);
-            
-            array.removeAll();
-            
-            json.put("city", "");
-            json.put("province", "");
-            json.put("country", stat);
-            json.put("lastUpdate", lastUpdate);
-            json.put("keyId", stat);
-            json.put("confirmed", sumConfirmed);
-            json.put("deaths", sumDeaths);
-            json.put("recovered", sumRecovered);
-            
-            array.add(json);
-            return statistics;
-        }
+        List<JsonNode> listConfirmed = array.findValues("confirmed");
+        Integer sumConfirmed = 0;
+        sumConfirmed = listConfirmed.stream().map((l) -> l.asInt()).reduce(sumConfirmed, Integer::sum);
+
+        List<JsonNode> listDeaths = array.findValues("deaths");
+        Integer sumDeaths = 0;
+        sumDeaths = listDeaths.stream().map((l) -> l.asInt()).reduce(sumDeaths, Integer::sum);
+
+        List<JsonNode> listRecovered = array.findValues("recovered");
+        Integer sumRecovered = 0;
+        sumRecovered = listRecovered.stream().map((l) -> l.asInt()).reduce(sumRecovered, Integer::sum);
+
+        array.removeAll();
+
+        json.put("city", "");
+        json.put("province", "");
+        json.put("country", "ALLCOUNTRIES");
+        json.put("lastUpdate", lastUpdate);
+        json.put("keyId", "ALLCOUNTRIES");
+        json.put("confirmed", sumConfirmed);
+        json.put("deaths", sumDeaths);
+        json.put("recovered", sumRecovered);
+
+        array.add(json);
 
         return statistics;
     }
-*/
+
 }
