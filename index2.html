@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Estadísticas Coronavirus</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'><link rel="stylesheet" href="./style2.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<center><h2>Estadísticas Coronavirus</h2></center>
+<div class="container">
+  <div id="app" class="row">
+    <div class="col-md-8 col-md-offset-2">
+    <div>Búsqueda por país: <input id="input-search" type="text" class="form-control" v-model="textSearch" placeholder='Buscar...'></div>
+      <div id="list-countries" v-if="countriesFilter && countriesFilter.length">
+        <div class="panel panel-default" v-for="country of countriesFilter.slice(0, 50)">
+          <div class="panel-heading">
+            <span>Last Update: {{country.lastUpdate}}</span>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-4">City: <strong>{{country.city}}</strong></div>
+              <div class="col-md-4">Province: <strong>{{country.province}}</strong></div>
+              <div class="col-md-4">Country: <strong>{{country.country}}</strong></div>
+            </div> 
+            <div class="row">
+              <div class="col-md-4">Confirmed: <strong>{{country.confirmed}}</strong></div>
+              <div class="col-md-4">Deaths: <strong >{{country.deaths}}</strong></div>
+              <div class="col-md-4">Recovered: <strong>{{country.recovered}}</strong></div>
+
+            </div> 
+          </div>
+        </div>
+      </div>
+      <div class="text-center" v-else>
+        No results!
+      </div>
+    </div>
+  </div>  
+</div>
+<!-- partial -->
+  <script src='https://unpkg.com/vue'></script>
+<script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/scrollup/2.4.1/jquery.scrollUp.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

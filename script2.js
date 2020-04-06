@@ -20,7 +20,7 @@ new Vue({
   },
   created: function() {
     var that = this;
-    axios.get('https://cors-anywhere.herokuapp.com/https://statistics-coronavirus.herokuapp.com/api/v1/statistics-covid-19/A')
+    axios.get('https://cors-anywhere.herokuapp.com/https://statistics-coronavirus.herokuapp.com/api/v1/statistics-covid-19/stats')
     .then(function (response) {
       that.statistics = JSON.parse(response.request.response).response.data.covid19Stats;
     })
