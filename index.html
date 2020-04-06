@@ -11,7 +11,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
  
-  <title>Estadísticas Coronavirus</title>
+  <title>Estadísticas Coronavirus por País</title>
       <script>
         $(document).ready(function(){
           $.getJSON( "https://cors-anywhere.herokuapp.com/https://statistics-coronavirus.herokuapp.com/api/v1/statistics-covid-19/stats", function( data ) {
@@ -27,28 +27,54 @@
                   {data : "recovered"}
                  ]
             });
+
+            $('#lastUpdate').text(data.response.data.covid19Stats[0].lastUpdate)
+
             });
-             
+
+            $.getJSON( "https://cors-anywhere.herokuapp.com/https://statistics-coronavirus.herokuapp.com/api/v1/statistics-covid-19/resumen", function( data ) {
+
+            $('#confirmed').text(data.response.data.covid19Stats[0].confirmed)
+            $('#deaths').text(data.response.data.covid19Stats[0].deaths) 
+            $('#recovered').text(data.response.data.covid19Stats[0].recovered)
+            });
+
         });
  
     </script>
 </head>
 <body>
-    <h2>Estadísticas Coronavirus</h2>
+    <h2 style ="color:blue;text-align: center;">Estadísticas Coronavirus por País</h2><br>
  <table id="data-table" class="table table-bordered" width="100%">
   <thead>
-    <tr>
-    <th>City</th>
-    <th>Province</th>
-    <th>Country</th>
-    <th>Confirmed</th>
-    <th>Deaths</th>
-    <th>Recovered</th>
+    <tr style = "background-color: azure;">
+    <th>Ciudad</th>
+    <th>Provincia</th>
+    <th>País</th>
+    <th>Confirmados</th>
+    <th style="color:red">Fallecidos</th>
+    <th>Recuperados</th>
     </tr>
   </thead>
- 
- 
  </table>
+
+ <h3 style ="color:blue;text-align: center;">Resumen General: </h3>
+ <table id="data-table-resumen" class="table table-bordered">
+  <thead>
+    <tr style = "background-color: azure;">
+    <th>Confirmados</th>
+    <th style="color:red">Fallecidos</th>
+    <th>Recuperados</th>
+    </tr>
+    <tr>
+      <th id = "confirmed"></th>
+      <th style="color:red" id ="deaths"></th>
+      <th id = "recovered"></th>
+      </tr>
+  </thead>
+ </table>
+
+ <div style ="color:red;text-align: right;">Actualizado al: <div id="lastUpdate"></div></div>
   
 </body>
  
