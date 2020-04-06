@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author eduar
  */
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("api/v1")
 public class Controller {
         
     private static final Logger LOGGER = LoggerFactory.getLogger(Controller.class);
@@ -29,16 +29,16 @@ public class Controller {
     @Autowired
     RestClient restClient;
     
-    @GetMapping(value = "/statistics-covid-19/{country}")
-    public ObjectNode getStatisticsByCountry(
-            @PathVariable(value = "country") String country) throws ResourceNotFoundException{
+    @GetMapping(value = "statistics-covid-19/stats")
+    public ObjectNode getStatisticsByCountry( ) throws ResourceNotFoundException{
         try{
-            ObjectNode productInventoryResp = restClient.getStatistics(country);
-            return productInventoryResp;
+            ObjectNode statistics = restClient.getStatistics( "A" );
+            return statistics;
         }
         catch(Exception e){
-            LOGGER.error("Error, detail: {}", e.getMessage());
+            LOGGER.error("Error, detail: {}", e);
+            return null;
         }
-        return null;
+
     }
 }
